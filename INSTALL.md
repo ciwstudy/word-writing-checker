@@ -33,16 +33,30 @@ https://raw.githubusercontent.com/ciwstudy/word-writing-checker/main/manifest.xm
 
 ## Install on Windows
 
-You need Word 2016 or newer, or Microsoft 365.
+You need Word 2016 or newer, or Microsoft 365. There are two ways to do this. Try the quick way first.
 
-### 1. Put the manifest in its own folder
+### The quick way (registry file)
+
+1. Make a folder called `WordAddins` on your **C:** drive and save `manifest.xml` in it, so the file sits at exactly `C:\WordAddins\manifest.xml`. (Turn on **View → Show → File name extensions** in File Explorer to make sure it didn't get saved as `manifest.xml.txt`.)
+2. Right-click [this link](https://raw.githubusercontent.com/ciwstudy/word-writing-checker/main/windows/install-writing-checker.reg), choose **Save link as**, and save it anywhere, like your Desktop. Make sure the name ends in `.reg`, not `.txt`.
+3. Close Word completely.
+4. Double-click `install-writing-checker.reg`. Windows will warn you about changing the registry. Click **Yes**, then **OK**.
+5. Open Word. **Check Writing** should be sitting on the Home tab. If you don't see it, go to **Home → Add-ins → More Add-ins → MY ADD-INS** and look under **Developer Add-ins**.
+
+All the file does is add one line to Word's settings that says "load the add-in described in `C:\WordAddins\manifest.xml`." It's the same method Microsoft's own developer tools use. To remove the checker later, double-click [uninstall-writing-checker.reg](https://raw.githubusercontent.com/ciwstudy/word-writing-checker/main/windows/uninstall-writing-checker.reg) instead.
+
+If the quick way doesn't work, use the shared-folder steps below.
+
+### The shared-folder way
+
+#### 1. Put the manifest in its own folder
 
 1. Open File Explorer and go to your **C:** drive. Make a new folder called `WordAddins`.
 2. Move `manifest.xml` into that folder.
 
 Some browsers quietly save the file as `manifest.xml.txt`. To check, click **View → Show → File name extensions** in File Explorer. If the name ends in `.txt`, rename it to plain `manifest.xml`.
 
-### 2. Share the folder with yourself
+#### 2. Share the folder with yourself
 
 Word only reads add-ins from a shared folder, even when you're the only one who uses it.
 
@@ -51,7 +65,7 @@ Word only reads add-ins from a shared folder, even when you're the only one who 
 3. Your own name should be listed already. Click **Share**, then **Done**.
 4. Back on the Sharing tab, find the **Network Path**. It looks something like `\\DESKTOP-4KJ82\WordAddins`. Copy it exactly.
 
-### 3. Tell Word to trust that folder
+#### 3. Tell Word to trust that folder
 
 1. Open Word and start a blank document.
 2. Go to **File → Options**. It sits at the bottom left, sometimes tucked under **More...**
@@ -62,7 +76,7 @@ Word only reads add-ins from a shared folder, even when you're the only one who 
 7. Click **OK**, then **OK** again.
 8. Close Word completely. Every Word window, not just this one.
 
-### 4. Add the checker
+#### 4. Add the checker
 
 1. Reopen Word.
 2. On the **Home** tab, click **Add-ins**, then **More Add-ins**. In older versions, look under **Insert → My Add-ins** instead.
