@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Writing Checker</title>
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <link rel="stylesheet" href="taskpane.css" />
+  <script type="module" src="taskpane.js"></script>
+</head>
+<body>
+  <header>
+    <button id="run" class="primary" disabled>Check document</button>
+    <div id="status" role="status" aria-live="polite">Loading…</div>
+  </header>
+
+  <nav id="tabs" role="tablist">
+    <button role="tab" data-tab="grammar" aria-selected="true">Grammar <span class="count"></span></button>
+    <button role="tab" data-tab="punctuation">Punctuation <span class="count"></span></button>
+    <button role="tab" data-tab="spelling">Spelling <span class="count"></span></button>
+    <button role="tab" data-tab="repeats">Repeats <span class="count"></span></button>
+    <button role="tab" data-tab="glue">Glue <span class="count"></span></button>
+    <button role="tab" data-tab="pronouns">Pronouns <span class="count"></span></button>
+  </nav>
+
+  <main id="results">
+    <p class="empty">Hit <strong>Check document</strong> to get started.</p>
+  </main>
+
+  <details id="settings">
+    <summary>Settings</summary>
+    <form id="settings-form">
+      <fieldset>
+        <legend>Grammar, punctuation &amp; spelling</legend>
+        <label class="check"><input type="checkbox" name="ltEnabled" /> Use LanguageTool</label>
+        <p class="hint">Your text gets sent to the LanguageTool server for these three checks. The other checks run on your computer only.</p>
+        <label>Language
+          <select name="language">
+            <option value="en-US">English (US)</option>
+            <option value="en-GB">English (UK)</option>
+            <option value="en-CA">English (Canada)</option>
+            <option value="en-AU">English (Australia)</option>
+            <option value="en-NZ">English (New Zealand)</option>
+          </select>
+        </label>
+        <label>Server URL <input name="serverUrl" type="url" /></label>
+        <label>Premium username <input name="username" autocomplete="off" /></label>
+        <label>Premium API key <input name="apiKey" type="password" autocomplete="off" /></label>
+        <label>Ignored rule IDs <input name="disabledRules" placeholder="comma separated" /></label>
+        <label>Personal dictionary <textarea name="dictionary" rows="3" placeholder="one word per line"></textarea></label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Repeated phrases</legend>
+        <div class="row">
+          <label>Shortest <input name="minLength" type="number" min="2" max="10" /></label>
+          <label>Longest <input name="maxLength" type="number" min="2" max="12" /></label>
+        </div>
+        <div class="row">
+          <label>Min. repeats (2 words) <input name="minCountShort" type="number" min="2" /></label>
+          <label>Min. repeats (3+ words) <input name="minCountLong" type="number" min="2" /></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Glue sentences</legend>
+        <div class="row">
+          <label>Flag at glue % <input name="glueThreshold" type="number" min="10" max="90" /></label>
+          <label>Min. sentence words <input name="glueMinWords" type="number" min="3" /></label>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Pronoun starts</legend>
+        <label>Flag runs of <input name="minRun" type="number" min="2" /> sentences</label>
+        <label class="check"><input type="checkbox" name="crossParagraphs" /> Count runs across paragraph breaks</label>
+        <label>Pronouns <input name="pronounList" /></label>
+      </fieldset>
+
+      <button type="button" id="reset-settings">Reset to defaults</button>
+    </form>
+  </details>
+</body>
+</html>

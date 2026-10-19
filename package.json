@@ -1,0 +1,25 @@
+{
+  "name": "word-writing-checker",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Word add-in that checks grammar, punctuation, spelling, repeated phrases, glue sentences and pronoun-heavy sentence starts.",
+  "type": "module",
+  "config": {
+    "dev_server_port": 3000
+  },
+  "scripts": {
+    "certs": "office-addin-dev-certs install",
+    "dev-server": "node scripts/serve.mjs",
+    "start": "office-addin-debugging start manifest.xml desktop",
+    "start:web": "office-addin-debugging start manifest.xml web",
+    "stop": "office-addin-debugging stop manifest.xml",
+    "validate": "office-addin-manifest validate manifest.xml",
+    "icons": "node scripts/make-icons.mjs",
+    "test": "node --test"
+  },
+  "devDependencies": {
+    "office-addin-debugging": "^5.1.0",
+    "office-addin-dev-certs": "^1.13.0",
+    "office-addin-manifest": "^1.13.0"
+  }
+}
