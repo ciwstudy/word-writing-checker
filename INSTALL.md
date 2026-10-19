@@ -17,7 +17,7 @@ Click any result and Word jumps right to it. Grammar and spelling results come w
 
 ## Before you start
 
-Word add-ins don't have an installer. You won't find an .msi or .exe here. The add-in is a small web page hosted free on GitHub Pages, and one file, `manifest.xml`, tells Word where to find it. All you ever install is that one file.
+The add-in is a small web page hosted free on GitHub Pages, and one file, `manifest.xml`, tells Word where to find it. Installing just means putting that file on your computer and telling Word about it. On Windows, the installer below does both for you.
 
 **Check that the web page is up.** Open this link in your browser:
 
@@ -33,9 +33,20 @@ https://raw.githubusercontent.com/ciwstudy/word-writing-checker/main/manifest.xm
 
 ## Install on Windows
 
-You need Word 2016 or newer, or Microsoft 365. There are two ways to do this. Try the quick way first.
+You need Word 2016 or newer, or Microsoft 365.
 
-### The quick way (registry file)
+### The easiest way: the installer
+
+1. Download **WritingChecker.msi** from the [latest release](https://github.com/ciwstudy/word-writing-checker/releases/latest).
+2. Close Word.
+3. Double-click the file. Windows may show a blue box that says **Windows protected your PC**, because the installer isn't signed with a paid certificate. Click **More info**, then **Run anyway**.
+4. Open Word. **Check Writing** appears on the Home tab. If not, go to **Home → Add-ins → More Add-ins → MY ADD-INS** and look under **Developer Add-ins**.
+
+No admin password needed, since it only installs for you. To remove it, go to **Settings → Apps → Installed apps**, find **Writing Checker for Word**, and click **Uninstall**.
+
+The installer skips the "Before you start" downloads above. You don't need to grab `manifest.xml` yourself.
+
+### The manual way (registry file)
 
 1. Make a folder called `WordAddins` on your **C:** drive and save `manifest.xml` in it, so the file sits at exactly `C:\WordAddins\manifest.xml`. (Turn on **View → Show → File name extensions** in File Explorer to make sure it didn't get saved as `manifest.xml.txt`.)
 2. Right-click [this link](https://raw.githubusercontent.com/ciwstudy/word-writing-checker/main/windows/install-writing-checker.reg), choose **Save link as**, and save it anywhere, like your Desktop. Make sure the name ends in `.reg`, not `.txt`.
@@ -57,7 +68,7 @@ It should say **The operation completed successfully.** To remove the checker la
 reg delete "HKCU\Software\Microsoft\Office\16.0\WEF\Developer" /v 04d0d9bc-382d-49af-9505-a7f97fda7c6e /f
 ```
 
-If the quick way doesn't work, use the shared-folder steps below.
+If neither of those works, use the shared-folder steps below.
 
 ### The shared-folder way
 

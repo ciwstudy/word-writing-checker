@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Per-user Windows installer for Writing Checker. Built with `npm run msi`.
+
+  The add-in itself is served from GitHub Pages, so all this installs is
+  manifest.xml plus the registry value that tells Word to load it (the
+  same thing office-addin-dev-settings does). No admin rights needed.
+-->
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*"
+           Name="Writing Checker for Word"
+           Language="1033"
+           Version="$(var.Version)"
+           Manufacturer="Parker Owens"
+           UpgradeCode="79FB1D54-B4B2-4268-B697-9C4E05D84FDE">
+
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perUser"
+             Description="Adds the Writing Checker add-in to Microsoft Word"
+             Comments="Checks grammar, spelling, repeated phrases, glue sentences and pronoun streaks." />
+    <Media Id="1" Cabinet="app.cab" EmbedCab="yes" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of Writing Checker is already installed." />
+
+    <Icon Id="AppIcon" SourceFile="installer/icon.ico" />
+    <Property Id="ARPPRODUCTICON" Value="AppIcon" />
+    <Property Id="ARPURLINFOABOUT" Value="https://github.com/ciwstudy/word-writing-checker" />
+    <Property Id="ARPNOMODIFY" Value="1" />
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="LocalAppDataFolder">
+        <Directory Id="INSTALLFOLDER" Name="WritingChecker">
+          <Component Id="AddIn" Guid="0209B2A3-FBC4-4A1A-BCF6-80F58EAA16CA">
+            <File Id="Manifest" Name="manifest.xml" Source="manifest.xml" />
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\Office\16.0\WEF\Developer"
+                           Name="04d0d9bc-382d-49af-9505-a7f97fda7c6e"
+                           Type="string" Value="[INSTALLFOLDER]manifest.xml" KeyPath="yes" />
+            <RemoveFolder Id="RemoveInstallFolder" On="uninstall" />
+          </Component>
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Feature Id="Main" Level="1">
+      <ComponentRef Id="AddIn" />
+    </Feature>
+  </Product>
+</Wix>

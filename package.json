@@ -15,7 +15,8 @@
     "stop": "office-addin-debugging stop manifest.dev.xml",
     "validate": "office-addin-manifest validate manifest.xml",
     "icons": "node scripts/make-icons.mjs",
-    "test": "node --test"
+    "test": "node --test",
+    "msi": "sh scripts/build-msi.sh"
   },
   "devDependencies": {
     "office-addin-debugging": "^5.1.0",
