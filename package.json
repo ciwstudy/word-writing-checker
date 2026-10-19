@@ -10,9 +10,9 @@
   "scripts": {
     "certs": "office-addin-dev-certs install",
     "dev-server": "node scripts/serve.mjs",
-    "start": "office-addin-debugging start manifest.xml desktop",
-    "start:web": "office-addin-debugging start manifest.xml web",
-    "stop": "office-addin-debugging stop manifest.xml",
+    "start": "office-addin-debugging start manifest.dev.xml desktop",
+    "start:web": "office-addin-debugging start manifest.dev.xml web",
+    "stop": "office-addin-debugging stop manifest.dev.xml",
     "validate": "office-addin-manifest validate manifest.xml",
     "icons": "node scripts/make-icons.mjs",
     "test": "node --test"

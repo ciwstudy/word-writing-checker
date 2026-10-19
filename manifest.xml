@@ -10,9 +10,9 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="Writing Checker" />
   <Description DefaultValue="Checks grammar, punctuation, spelling, repeated phrases, glue sentences, and pronoun-heavy sentence starts." />
-  <IconUrl DefaultValue="https://localhost:3000/assets/icon-32.png" />
-  <HighResolutionIconUrl DefaultValue="https://localhost:3000/assets/icon-80.png" />
-  <SupportUrl DefaultValue="https://localhost:3000/taskpane.html" />
+  <IconUrl DefaultValue="https://ciwstudy.github.io/word-writing-checker/assets/icon-32.png" />
+  <HighResolutionIconUrl DefaultValue="https://ciwstudy.github.io/word-writing-checker/assets/icon-80.png" />
+  <SupportUrl DefaultValue="https://ciwstudy.github.io/word-writing-checker/src/taskpane.html" />
   <AppDomains>
     <AppDomain>https://api.languagetool.org</AppDomain>
   </AppDomains>
@@ -25,7 +25,7 @@
     </Sets>
   </Requirements>
   <DefaultSettings>
-    <SourceLocation DefaultValue="https://localhost:3000/taskpane.html" />
+    <SourceLocation DefaultValue="https://ciwstudy.github.io/word-writing-checker/src/taskpane.html" />
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
 
@@ -71,12 +71,12 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16" DefaultValue="https://localhost:3000/assets/icon-16.png" />
-        <bt:Image id="Icon.32" DefaultValue="https://localhost:3000/assets/icon-32.png" />
-        <bt:Image id="Icon.80" DefaultValue="https://localhost:3000/assets/icon-80.png" />
+        <bt:Image id="Icon.16" DefaultValue="https://ciwstudy.github.io/word-writing-checker/assets/icon-16.png" />
+        <bt:Image id="Icon.32" DefaultValue="https://ciwstudy.github.io/word-writing-checker/assets/icon-32.png" />
+        <bt:Image id="Icon.80" DefaultValue="https://ciwstudy.github.io/word-writing-checker/assets/icon-80.png" />
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://localhost:3000/taskpane.html" />
+        <bt:Url id="Taskpane.Url" DefaultValue="https://ciwstudy.github.io/word-writing-checker/src/taskpane.html" />
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="Writing Checker is ready" />

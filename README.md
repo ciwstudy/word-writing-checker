@@ -19,21 +19,43 @@ Everything else (repeats, glue, pronouns) runs right in the panel. That text nev
 
 The free LanguageTool server caps you at about 20 requests a minute, so the add-in sends long manuscripts in chunks with a short pause between each. A 100,000-word novel takes a minute or two. If you have LanguageTool Premium, put your username and API key in Settings and it'll go faster and catch more.
 
-## Setup
+## Installing it in Word
 
-You need [Node.js](https://nodejs.org) 18 or newer and desktop Word (Windows or Mac) or Word on the web.
+Word add-ins don't come with an installer. The add-in is a little web page (hosted free on GitHub Pages at `https://ciwstudy.github.io/word-writing-checker/`), and `manifest.xml` tells Word where to find it. All you do is hand Word that one file.
+
+First, download [`manifest.xml`](https://raw.githubusercontent.com/ciwstudy/word-writing-checker/main/manifest.xml) (right-click → Save link as). Then follow the steps for your version of Word.
+
+**Windows desktop Word**
+
+1. Make a folder, say `C:\WordAddins`, and put `manifest.xml` in it.
+2. Right-click the folder → **Properties → Sharing → Share**, share it with yourself, and copy the network path it shows (looks like `\\YOUR-PC\WordAddins`).
+3. In Word: **File → Options → Trust Center → Trust Center Settings → Trusted Add-in Catalogs**. Paste the path into **Catalog Url**, click **Add catalog**, tick **Show in Menu**, click OK, and restart Word.
+4. **Home → Add-ins → More Add-ins → Shared Folder** tab → pick **Writing Checker** → **Add**.
+
+**Mac desktop Word**
+
+1. Close Word.
+2. In Finder, press **Cmd+Shift+G** and go to `~/Library/Containers/com.microsoft.Word/Data/Documents/wef` (make the `wef` folder if it doesn't exist).
+3. Drop `manifest.xml` in there and open Word. The add-in shows up under **Home → Add-ins**.
+
+**Word on the web (Microsoft 365 in a browser)**
+
+1. Open a document, then **Home → Add-ins → More Add-ins → My Add-ins → Upload My Add-in**.
+2. Choose `manifest.xml` and click **Upload**.
+
+Once it's in, look for **Check Writing** on the Home tab.
+
+## Working on the code
+
+If you change the code and want to test it before pushing, you'll need [Node.js](https://nodejs.org) 18 or newer. This uses `manifest.dev.xml`, which loads the add-in from your own computer instead of GitHub:
 
 ```bash
 npm install
 npm run certs      # one time: trusts a localhost HTTPS certificate (it'll ask for permission)
-npm start          # starts the local server and opens Word with the add-in loaded
+npm start          # starts the local server and opens Word with "Writing Checker (dev)" loaded
 ```
 
-Look on the **Home** tab for a **Check Writing** button.
-
-For Word on the web, run `npm run dev-server`. Then, in Word online, go to **Home → Add-ins → More Add-ins → My Add-ins → Upload My Add-in** and choose `manifest.xml`.
-
-When you're done, `npm stop` unloads it.
+`npm stop` unloads it. Anything you push to `main` goes live on GitHub Pages within a minute or two, and Word picks it up the next time you open the panel.
 
 ## Tweaking the checks
 
@@ -57,7 +79,8 @@ A couple of details: the repeat finder skips phrases built entirely out of fille
 ## Project layout
 
 ```
-manifest.xml          tells Word about the add-in
+manifest.xml          tells Word about the add-in (points at GitHub Pages)
+manifest.dev.xml      same, but points at https://localhost:3000 for testing
 src/taskpane.html     the panel
 src/taskpane.js       UI and wiring
 src/analyzers.js      repeats, glue, pronoun checks (plain JS, no Office code)
@@ -67,6 +90,6 @@ scripts/serve.mjs     local HTTPS server
 tests/                run with `npm test`
 ```
 
-## Publishing it for real
+## Hosting
 
-Right now the manifest points at `https://localhost:3000`. To use it without running a server, host the `src` and `assets` folders somewhere with HTTPS (GitHub Pages, Netlify and Azure Static Web Apps all work). Then swap every `https://localhost:3000` in `manifest.xml` for that address and run `npm run validate` before sideloading or submitting.
+The add-in is served by GitHub Pages from the `main` branch (Settings → Pages → Deploy from a branch → `main` / root). If you ever move it somewhere else, swap every `https://ciwstudy.github.io/word-writing-checker` in `manifest.xml` for the new address and run `npm run validate`.
