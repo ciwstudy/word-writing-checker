@@ -45,6 +45,18 @@ You need Word 2016 or newer, or Microsoft 365. There are two ways to do this. Tr
 
 All the file does is add one line to Word's settings that says "load the add-in described in `C:\WordAddins\manifest.xml`." It's the same method Microsoft's own developer tools use. To remove the checker later, double-click [uninstall-writing-checker.reg](https://raw.githubusercontent.com/ciwstudy/word-writing-checker/main/windows/uninstall-writing-checker.reg) instead.
 
+**Can't download the .reg file?** Skip steps 2 and 4. Instead, click **Start**, type `cmd`, press **Enter**, then paste this line into the black window and press **Enter**:
+
+```
+reg add "HKCU\Software\Microsoft\Office\16.0\WEF\Developer" /v 04d0d9bc-382d-49af-9505-a7f97fda7c6e /t REG_SZ /d "C:\WordAddins\manifest.xml" /f
+```
+
+It should say **The operation completed successfully.** To remove the checker later, run:
+
+```
+reg delete "HKCU\Software\Microsoft\Office\16.0\WEF\Developer" /v 04d0d9bc-382d-49af-9505-a7f97fda7c6e /f
+```
+
 If the quick way doesn't work, use the shared-folder steps below.
 
 ### The shared-folder way
