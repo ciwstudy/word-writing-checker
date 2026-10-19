@@ -1,1 +1,2 @@
 *.reg -text
+*.msi binary

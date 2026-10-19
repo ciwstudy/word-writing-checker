@@ -37,7 +37,7 @@ You need Word 2016 or newer, or Microsoft 365.
 
 ### The easiest way: the installer
 
-1. Download **WritingChecker.msi** from the [latest release](https://github.com/ciwstudy/word-writing-checker/releases/latest).
+1. Download [**WritingChecker.msi**](https://github.com/ciwstudy/word-writing-checker/raw/main/downloads/WritingChecker.msi). Clicking the link downloads it right away.
 2. Close Word.
 3. Double-click the file. Windows may show a blue box that says **Windows protected your PC**, because the installer isn't signed with a paid certificate. Click **More info**, then **Run anyway**.
 4. Open Word. **Check Writing** appears on the Home tab. If not, go to **Home → Add-ins → More Add-ins → MY ADD-INS** and look under **Developer Add-ins**.

@@ -21,7 +21,7 @@ The free LanguageTool server caps you at about 20 requests a minute, so the add-
 
 ## Installing it in Word
 
-**Click-by-click instructions and troubleshooting: [INSTALL.md](INSTALL.md).** The short version is below.
+**On Windows, the easy way is the installer: [download WritingChecker.msi](https://github.com/ciwstudy/word-writing-checker/raw/main/downloads/WritingChecker.msi), close Word, and double-click it.** Click-by-click instructions for everything else are in [INSTALL.md](INSTALL.md). The short version is below.
 
 Word add-ins don't come with an installer. The add-in is a little web page (hosted free on GitHub Pages at `https://ciwstudy.github.io/word-writing-checker/`), and `manifest.xml` tells Word where to find it. All you do is hand Word that one file.
 
